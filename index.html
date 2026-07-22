@@ -1,0 +1,1771 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cristalik RP | Форум и Жалобы</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #121418;
+            --card-bg: #1a1d24;
+            --card-hover: #222630;
+            --accent: #527238;
+            --accent-hover: #608542;
+            --text-main: #e2e8f0;
+            --text-muted: #8b949e;
+            --border: #2d333b;
+            --success: #2ea043;
+            --danger: #f85149;
+            --warning: #d29922;
+            --closed: #6e7681;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            --radius: 8px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-main);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        .logo i {
+            background: rgba(82, 114, 56, 0.15);
+            color: var(--accent);
+            padding: 8px;
+            border-radius: var(--radius);
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--text-main);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 8px 16px;
+            border-radius: var(--radius);
+            font-weight: 500;
+            font-size: 13px;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent);
+            background: rgba(82, 114, 56, 0.1);
+        }
+
+        .user-profile-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--border);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: var(--radius);
+        }
+
+        .user-profile-badge span {
+            font-weight: 600;
+            font-size: 13px;
+            color: var(--text-main);
+        }
+
+        .user-custom-prefix {
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-left: 4px;
+            display: inline-block;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 32px auto;
+            padding: 0 16px;
+            width: 100%;
+            flex: 1;
+        }
+
+        .hero {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 32px;
+            margin-bottom: 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-main);
+        }
+
+        .hero-content h1 {
+            font-size: 26px;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .hero-content p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            font-size: 14px;
+            line-height: 1.5;
+            max-width: 550px;
+        }
+
+        .btn {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 9px 18px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.2s;
+        }
+
+        .hero .btn:hover, .btn:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .btn-danger {
+            background-color: #5a5a5a;
+            color: white;
+        }
+        .btn-danger:hover {
+            background-color: #c0392b;
+        }
+
+        .section-category-title {
+            font-size: 15px;
+            margin: 24px 0 12px 0;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-category-title i {
+            color: var(--accent);
+        }
+
+        .forum-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .forum-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: var(--shadow);
+            transition: background-color 0.2s, border-color 0.2s;
+        }
+
+        .forum-card:hover {
+            background-color: var(--card-hover);
+            border-color: var(--text-muted);
+        }
+
+        .forum-info {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .forum-icon {
+            font-size: 18px;
+            color: var(--accent);
+            background: rgba(82, 114, 56, 0.15);
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius);
+        }
+
+        .forum-details h3 {
+            font-size: 15px;
+            margin-bottom: 3px;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .forum-details p {
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        .view-section {
+            display: none;
+        }
+
+        .view-section.active {
+            display: block;
+        }
+
+        .topics-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .back-btn {
+            background: var(--card-bg);
+            color: var(--text-muted);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 13px;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .back-btn:hover {
+            color: var(--text-main);
+            border-color: var(--text-muted);
+        }
+
+        .topics-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .topic-item {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 14px 20px;
+            border-radius: var(--radius);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.2s, border-color 0.2s;
+        }
+
+        .topic-item:hover {
+            background-color: var(--card-hover);
+            border-color: var(--text-muted);
+        }
+
+        .topic-info h4 {
+            font-size: 14px;
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+
+        .topic-info span {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .status-badge {
+            font-size: 11px;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .status-approved {
+            background: rgba(46, 160, 67, 0.2);
+            color: var(--success);
+            border: 1px solid var(--success);
+        }
+
+        .status-rejected {
+            background: rgba(248, 81, 73, 0.2);
+            color: var(--danger);
+            border: 1px solid var(--danger);
+        }
+
+        .status-pending {
+            background: rgba(210, 153, 34, 0.2);
+            color: var(--warning);
+            border: 1px solid var(--warning);
+        }
+
+        .status-closed {
+            background: rgba(110, 118, 129, 0.2);
+            color: var(--closed);
+            border: 1px solid var(--closed);
+        }
+
+        .topic-view-box {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        .topic-author-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .author-info-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .author-avatar {
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 15px;
+            color: white;
+        }
+
+        .author-meta h4 {
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            font-weight: 600;
+        }
+
+        .author-meta span {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .topic-body-content {
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--text-main);
+            word-break: break-word;
+        }
+
+        .admin-topic-actions {
+            margin-top: 16px;
+            padding-top: 12px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .comments-section-title {
+            font-size: 15px;
+            margin-bottom: 14px;
+            font-weight: 600;
+        }
+
+        .comments-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .comment-item {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 16px;
+        }
+
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .comment-author-wrap {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .comment-author {
+            font-weight: 600;
+            font-size: 13px;
+            color: var(--text-main);
+        }
+
+        .comment-date {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .comment-text {
+            font-size: 13px;
+            line-height: 1.5;
+            color: var(--text-main);
+            word-break: break-word;
+        }
+
+        .editor-toolbar {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            flex-wrap: wrap;
+            background: #16181d;
+            padding: 8px 12px;
+            border-radius: var(--radius) var(--radius) 0 0;
+            border: 1px solid var(--border);
+            border-bottom: none;
+        }
+
+        .toolbar-group {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            border-right: 1px solid var(--border);
+            padding-right: 8px;
+        }
+
+        .toolbar-group:last-child {
+            border-right: none;
+        }
+
+        .toolbar-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            padding: 6px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            transition: 0.2s;
+        }
+
+        .toolbar-btn:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .toolbar-select {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            padding: 5px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .color-presets {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .color-swatch {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: transform 0.1s, border-color 0.2s;
+        }
+
+        .color-swatch:hover {
+            transform: scale(1.2);
+            border-color: #ffffff;
+        }
+
+        .custom-color-picker {
+            background: transparent;
+            border: none;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .rich-editor {
+            width: 100%;
+            min-height: 150px;
+            max-height: 300px;
+            padding: 12px 14px;
+            background: var(--bg-color);
+            border: 1px solid var(--border);
+            border-radius: 0 0 var(--radius) var(--radius);
+            color: var(--text-main);
+            font-size: 14px;
+            overflow-y: auto;
+            outline: none;
+            line-height: 1.5;
+        }
+        
+        .rich-editor:focus {
+            border-color: var(--accent);
+        }
+
+        .comment-form {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px;
+        }
+
+        .comment-form h4 {
+            margin-bottom: 12px;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.75);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 16px;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 28px;
+            border-radius: var(--radius);
+            width: 100%;
+            max-width: 620px;
+            position: relative;
+            margin: auto;
+            box-shadow: var(--shadow);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .modal-close:hover {
+            background: var(--border);
+            color: var(--text-main);
+        }
+
+        .modal-content h3 {
+            margin-bottom: 16px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 14px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 12px;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px 14px;
+            background: var(--bg-color);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            color: var(--text-main);
+            font-size: 13px;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .modal-switch-text {
+            margin-top: 16px;
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .modal-switch-text span {
+            color: var(--accent);
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .modal-switch-text span:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background-color: var(--card-bg);
+            border-top: 1px solid var(--border);
+            text-align: center;
+            padding: 20px;
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        @media(max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                gap: 16px;
+                padding: 20px;
+            }
+            nav {
+                display: none;
+            }
+            header {
+                padding: 12px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo" onclick="switchView('home')"><i class="fa-solid fa-cube"></i> Cristalik<span>RP</span></div>
+        <nav>
+            <a onclick="switchView('home')" class="active"><i class="fa-solid fa-house"></i> Главная</a>
+            <a onclick="openCategory('Общие правила сервера', 'rules_general')"><i class="fa-solid fa-book"></i> Правила</a>
+            <a onclick="openCategory('Жалобы на игроков, состоящих в Гос.Структурах', 'compl_gos')"><i class="fa-solid fa-triangle-exclamation"></i> Жалобы</a>
+            <a onclick="openCategory('Заявка на лидера МВД', 'app_mvd')"><i class="fa-solid fa-file-lines"></i> Заявки</a>
+        </nav>
+        <div class="header-actions" id="headerAuthArea">
+            <button class="btn-outline" onclick="openAuthModal('login')"><i class="fa-solid fa-right-to-bracket"></i> Вход</button>
+            <button class="btn" onclick="openAuthModal('register')"><i class="fa-solid fa-user-plus"></i> Регистрация</button>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <!-- ГЛАВНАЯ СТРАНИЦА -->
+        <div id="view-home" class="view-section active">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1>Портал Cristalik RP</h1>
+                    <p>Официальный форум современного CRMP проекта. Выберите нужный раздел ниже для ознакомления или создания обращения.</p>
+                    <button class="btn" onclick="checkAuthAndOpenCreateTopic()">Создать тему <i class="fa-solid fa-plus"></i></button>
+                </div>
+                <div class="hero-stats">
+                    <i class="fa-solid fa-server" style="font-size: 64px; color: var(--text-muted);"></i>
+                </div>
+            </div>
+
+            <!-- РАЗДЕЛ 1: ПРАВИЛА -->
+            <div class="section-category-title"><i class="fa-solid fa-book"></i> Правила</div>
+            <div class="forum-grid">
+                <div class="forum-card">
+                    <div class="forum-info">
+                        <div class="forum-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+                        <div class="forum-details">
+                            <h3>Общие правила сервера</h3>
+                            <p>Обязательны к прочтению для всех игроков Cristalik RP.</p>
+                        </div>
+                    </div>
+                    <button class="btn" onclick="openCategory('Общие правила сервера', 'rules_general')" style="padding: 6px 12px; font-size: 12px;">Открыть</button>
+                </div>
+
+                <div class="forum-card">
+                    <div class="forum-info">
+                        <div class="forum-icon"><i class="fa-solid fa-building-columns"></i></div>
+                        <div class="forum-details">
+                            <h3>Правила гос. структур и ОПГ</h3>
+                            <p>Нормативы и регламенты для фракций.</p>
+                        </div>
+                    </div>
+                    <button class="btn" onclick="openCategory('Правила гос. структур и ОПГ', 'rules_fractions')" style="padding: 6px 12px; font-size: 12px;">Открыть</button>
+                </div>
+            </div>
+
+            <!-- РАЗДЕЛ 2: ЖАЛОБЫ -->
+            <div class="section-category-title"><i class="fa-solid fa-triangle-exclamation"></i> Жалобы</div>
+            <div class="forum-grid">
+                <div class="forum-card">
+                    <div class="forum-info">
+                        <div class="forum-icon"><i class="fa-solid fa-user-shield"></i></div>
+                        <div class="forum-details">
+                            <h3>Жалобы на игроков, состоящих в Гос.Структурах</h3>
+                            <p>Нарушения правил со стороны сотрудников гос. организаций.</p>
+                        </div>
+                    </div>
+                    <button class="btn" onclick="openCategory('Жалобы на игроков, состоящих в Гос.Структурах', 'compl_gos')" style="padding: 6px 12px; font-size: 12px;">Открыть</button>
+                </div>
+
+                <div class="forum-card">
+                    <div class="forum-info">
+                        <div class="forum-icon"><i class="fa-solid fa-user-secret"></i></div>
+                        <div class="forum-details">
+                            <h3>Жалобы на игроков, состоящих в Мафиях/Бандах</h3>
+                            <p>Нарушения от участников криминальных структур.</p>
+                        </div>
+                    </div>
+                    <button class="btn" onclick="openCategory('Жалобы на игроков, состоящих в Мафиях/Бандах', 'compl_crime')" style="padding: 6px 12px; font-size: 12px;">Открыть</button>
+                </div>
+
+                <div class="forum-card">
+                    <div class="forum-info">
+                        <div class="forum-icon"><i class="fa-solid fa-user-xmark"></i></div>
+                        <div class="forum-details">
+                            <h3>Жалобы на игроков, не состоящих в Мафиях/Бандах</h3>
+                            <p>Жалобы на обычных игроков.</p>
+                        </div>
+                    </div>
+                    <button class="btn" onclick="openCategory('Жалобы на игроков, не состоящих в Мафиях/Бандах', 'compl_civ')" style="padding: 6px 12px; font-size: 12px;">Открыть</button>
+                </div>
+
+                <div class="forum-card">
+                    <div class="forum-info">
+                        <div class="forum-icon"><i class="fa-solid fa-user-gear"></i></div>
+                        <div class="forum-details">
+                            <h3>Жалобы на Администраторов</h3>
+                            <p>Претензии к работе административного состава сервера.</p>
+                        </div>
+                    </div>
+                    <button class="btn" onclick="openCategory('Жалобы на Администраторов', 'compl_admin')" style="padding: 6px 12px; font-size: 12px;">Открыть</button>
+                </div>
+            </div>
+
+            <!-- РАЗДЕЛ 3: ЗАЯВКИ -->
+            <div class="section-category-title"><i class="fa-solid fa-file-lines"></i> Заявки</div>
+            <div class="forum-grid">
+                <div class="forum-card">
+                    <div class="forum-info">
+                        <div class="forum-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                        <div class="forum-details">
+                            <h3>Заявка на лидера МВД</h3>
+                            <p>Электронные заявления на пост лидера Министерства Внутренних Дел.</p>
+                        </div>
+                    </div>
+                    <button class="btn" onclick="openCategory('Заявка на лидера МВД', 'app_mvd')" style="padding: 6px 12px; font-size: 12px;">Открыть</button>
+                </div>
+
+                <div class="forum-card">
+                    <div class="forum-info">
+                        <div class="forum-icon"><i class="fa-solid fa-building-shield"></i></div>
+                        <div class="forum-details">
+                            <h3>Заявка на лидера ФСБ</h3>
+                            <p>Электронные заявления на пост лидера Федеральной Службы Безопасности.</p>
+                        </div>
+                    </div>
+                    <button class="btn" onclick="openCategory('Заявка на лидера ФСБ', 'app_fsb')" style="padding: 6px 12px; font-size: 12px;">Открыть</button>
+                </div>
+
+                <div class="forum-card">
+                    <div class="forum-info">
+                        <div class="forum-icon"><i class="fa-solid fa-jet-fighter"></i></div>
+                        <div class="forum-details">
+                            <h3>Заявка на лидера МО</h3>
+                            <p>Электронные заявления на пост лидера Министерства Обороны.</p>
+                        </div>
+                    </div>
+                    <button class="btn" onclick="openCategory('Заявка на лидера МО', 'app_mo')" style="padding: 6px 12px; font-size: 12px;">Открыть</button>
+                </div>
+
+                <div class="forum-card">
+                    <div class="forum-info">
+                        <div class="forum-icon"><i class="fa-solid fa-landmark"></i></div>
+                        <div class="forum-details">
+                            <h3>Заявка на лидера Пра-во</h3>
+                            <p>Электронные заявления на пост лидера Правительства.</p>
+                        </div>
+                    </div>
+                    <button class="btn" onclick="openCategory('Заявка на лидера Пра-во', 'app_prav')" style="padding: 6px 12px; font-size: 12px;">Открыть</button>
+                </div>
+
+                <div class="forum-card">
+                    <div class="forum-info">
+                        <div class="forum-icon"><i class="fa-solid fa-user-gear"></i></div>
+                        <div class="forum-details">
+                            <h3>Заявка на Администратора</h3>
+                            <p>Хотите стать частью команды администрации проекта?</p>
+                        </div>
+                    </div>
+                    <button class="btn" onclick="openCategory('Заявка на Администратора', 'app_admin')" style="padding: 6px 12px; font-size: 12px;">Открыть</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- СТРАНИЦА СПИСКА ТЕМ -->
+        <div id="view-category" class="view-section">
+            <div class="topics-header">
+                <div>
+                    <button class="back-btn" onclick="switchView('home')"><i class="fa-solid fa-arrow-left"></i> Назад к разделам</button>
+                    <h2 id="category-title" style="margin-top: 12px; font-size: 20px; font-weight: 600;">Название раздела</h2>
+                </div>
+                <button class="btn" onclick="checkAuthAndOpenCreateTopic()"><i class="fa-solid fa-plus"></i> Создать тему</button>
+            </div>
+
+            <div class="topics-list" id="topicsContainer"></div>
+        </div>
+
+        <!-- СТРАНИЦА ПРОСМОТРА ОДНОЙ ТЕМЫ -->
+        <div id="view-topic" class="view-section">
+            <div class="topics-header">
+                <div>
+                    <button class="back-btn" onclick="openCategory(currentCategoryTitle, currentCategoryKey)"><i class="fa-solid fa-arrow-left"></i> К списку тем</button>
+                    <h2 id="viewTopicTitle" style="margin-top: 12px; font-size: 20px; font-weight: 600; display: flex; align-items: center; gap: 12px;">
+                        <span>Заголовок темы</span>
+                        <span id="viewTopicStatus"></span>
+                    </h2>
+                </div>
+                <div id="adminStatusControls" style="display: none;">
+                    <select class="toolbar-select" onchange="changeTopicStatus(this.value)" style="padding: 8px; font-weight: 600;">
+                        <option value="">Сменить статус темы...</option>
+                        <option value="pending">⏳ В рассмотрении</option>
+                        <option value="approved">✅ Одобрено</option>
+                        <option value="rejected">❌ Отказано</option>
+                        <option value="closed">🔒 Закрыто</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="topic-view-box">
+                <div class="topic-author-header">
+                    <div class="author-info-group">
+                        <div class="author-avatar" id="topicAuthorAvatar">D</div>
+                        <div class="author-meta">
+                            <h4 id="topicAuthorName">Имя автора</h4>
+                            <span id="topicDate">Дата публикации</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="topic-body-content" id="topicContentBody">Текст темы...</div>
+                
+                <!-- КНОПКА УДАЛЕНИЯ ТЕМЫ -->
+                <div class="admin-topic-actions" id="deleteTopicBtnContainer" style="display: none;">
+                    <button type="button" class="btn btn-danger" onclick="confirmDeleteTopic()"><i class="fa-solid fa-trash"></i> Удалить тему</button>
+                </div>
+            </div>
+
+            <div class="comments-section-title"><i class="fa-solid fa-comments"></i> Комментарии (<span id="commentCount">0</span>)</div>
+            <div class="comments-list" id="commentsContainer"></div>
+
+            <div class="comment-form">
+                <h4>Оставить комментарий</h4>
+                <form onsubmit="handleAddComment(event)">
+                    <div class="form-group">
+                        <label>Ваш игровой ник</label>
+                        <input type="text" id="commentAuthorName" placeholder="Автозаполнение из профиля" readonly required>
+                    </div>
+                    <div class="form-group">
+                        <label>Комментарий</label>
+                        
+                        <!-- ПАНЕЛЬ ФОРМАТИРОВАНИЯ И ПАЛИТРА -->
+                        <div class="editor-toolbar">
+                            <div class="toolbar-group">
+                                <button type="button" class="toolbar-btn" onclick="execCmd('bold', 'commentTextBody')"><i class="fa-solid fa-bold"></i></button>
+                                <button type="button" class="toolbar-btn" onclick="execCmd('italic', 'commentTextBody')"><i class="fa-solid fa-italic"></i></button>
+                                <button type="button" class="toolbar-btn" onclick="execCmd('underline', 'commentTextBody')"><i class="fa-solid fa-underline"></i></button>
+                            </div>
+
+                            <!-- КНОПКИ ВЫРАВНИВАНИЯ ТЕКСТА -->
+                            <div class="toolbar-group">
+                                <button type="button" class="toolbar-btn" onclick="execCmd('justifyLeft', 'commentTextBody')" title="По левому краю"><i class="fa-solid fa-align-left"></i></button>
+                                <button type="button" class="toolbar-btn" onclick="execCmd('justifyCenter', 'commentTextBody')" title="По центру"><i class="fa-solid fa-align-center"></i></button>
+                                <button type="button" class="toolbar-btn" onclick="execCmd('justifyRight', 'commentTextBody')" title="По правому краю"><i class="fa-solid fa-align-right"></i></button>
+                            </div>
+                            
+                            <div class="toolbar-group">
+                                <select class="toolbar-select" onchange="execCommandValue('fontName', this.value, 'commentTextBody'); this.value='';">
+                                    <option value="">Шрифт</option>
+                                    <option value="Inter">Inter</option>
+                                    <option value="Roboto">Roboto</option>
+                                    <option value="Courier New">Моноширинный</option>
+                                    <option value="Georgia">С засечками</option>
+                                </select>
+
+                                <select class="toolbar-select" onchange="execCommandValue('fontSize', this.value, 'commentTextBody'); this.value='';">
+                                    <option value="">Размер</option>
+                                    <option value="2">Маленький</option>
+                                    <option value="3">Обычный</option>
+                                    <option value="5">Крупный</option>
+                                    <option value="7">Заголовок</option>
+                                </select>
+                            </div>
+
+                            <!-- ПАЛИТРА ПРЕСЕТОВ ЦВЕТА -->
+                            <div class="toolbar-group">
+                                <div class="color-presets" title="Быстрый цвет">
+                                    <div class="color-swatch" style="background: #ffffff;" onclick="execCommandValue('foreColor', '#ffffff', 'commentTextBody')"></div>
+                                    <div class="color-swatch" style="background: #3fb950;" onclick="execCommandValue('foreColor', '#3fb950', 'commentTextBody')"></div>
+                                    <div class="color-swatch" style="background: #f85149;" onclick="execCommandValue('foreColor', '#f85149', 'commentTextBody')"></div>
+                                    <div class="color-swatch" style="background: #d29922;" onclick="execCommandValue('foreColor', '#d29922', 'commentTextBody')"></div>
+                                    <div class="color-swatch" style="background: #58a6ff;" onclick="execCommandValue('foreColor', '#58a6ff', 'commentTextBody')"></div>
+                                    <div class="color-swatch" style="background: #bc8cff;" onclick="execCommandValue('foreColor', '#bc8cff', 'commentTextBody')"></div>
+                                </div>
+                                <input type="color" class="custom-color-picker" onchange="execCommandValue('foreColor', this.value, 'commentTextBody')" title="Выбрать любой цвет">
+                            </div>
+                        </div>
+
+                        <div id="commentTextBody" class="rich-editor" contenteditable="true" placeholder="Введите ваш текст..."></div>
+                    </div>
+                    <button type="submit" class="btn" style="margin-top: 14px;">Отправить комментарий</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Модальное окно: Авторизация / Регистрация -->
+    <div class="modal" id="authModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeAuthModal()">&times;</button>
+            <h3 id="authModalTitle">Авторизация</h3>
+            
+            <form id="authForm" onsubmit="handleAuthSubmit(event)">
+                <div class="form-group" id="groupRegNick" style="display: none;">
+                    <label>Игровой ник (Логин)</label>
+                    <input type="text" id="authNickname" placeholder="например: Winller_AngelsAdmins">
+                </div>
+                <div class="form-group">
+                    <label>Электронная почта / Логин / Ник</label>
+                    <input type="text" id="authEmail" placeholder="user@example.com или Ник" required>
+                </div>
+                <div class="form-group">
+                    <label>Пароль</label>
+                    <input type="password" id="authPassword" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn" id="authSubmitBtn" style="width: 100%; justify-content: center;">Войти</button>
+            </form>
+
+            <div class="modal-switch-text" id="authSwitchText">
+                Нет аккаунта? <span onclick="toggleAuthMode('register')">Зарегистрироваться</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно создания темы -->
+    <div class="modal" id="actionModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <h3 id="modalTitle">Создать новую тему</h3>
+            <form id="forumForm" onsubmit="handleCreateTopic(event)">
+                <div class="form-group">
+                    <label>Тип обращения (Категория)</label>
+                    <select id="topicCategorySelect" onchange="updateFormFields()">
+                        <optgroup label="Правила">
+                            <option value="rules_general">Общие правила сервера</option>
+                            <option value="rules_fractions">Правила гос. структур и ОПГ</option>
+                        </optgroup>
+                        <optgroup label="Жалобы">
+                            <option value="compl_gos">Жалобы на игроков, состоящих в Гос.Структурах</option>
+                            <option value="compl_crime">Жалобы на игроков, состоящих в Мафиях/Бандах</option>
+                            <option value="compl_civ">Жалобы на игроков, не состоящих в Мафиях/Бандах</option>
+                            <option value="compl_admin">Жалобы на Администраторов</option>
+                        </optgroup>
+                        <optgroup label="Заявки">
+                            <option value="app_mvd">Заявка на лидера МВД</option>
+                            <option value="app_fsb">Заявка на лидера ФСБ</option>
+                            <option value="app_mo">Заявка на лидера МО</option>
+                            <option value="app_prav">Заявка на лидера Пра-во</option>
+                            <option value="app_admin">Заявка на Администратора</option>
+                        </optgroup>
+                    </select>
+                </div>
+                
+                <!-- Динамические поля форм -->
+                <div id="dynamicFields"></div>
+                
+                <button type="submit" class="btn" style="width: 100%; justify-content: center; margin-top: 14px;">Опубликовать тему</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Модальное окно: Админ-панель -->
+    <div class="modal" id="adminModal">
+        <div class="modal-content" style="max-width: 480px;">
+            <button class="modal-close" onclick="closeAdminModal()">&times;</button>
+            <h3><i class="fa-solid fa-shield-halved" style="color: var(--accent);"></i> Панель управления администратора</h3>
+            <p style="color: var(--text-muted); font-size: 12px; margin-bottom: 16px;">Выдача прав администратора от 1 до 8 уровня, префиксов и цветов для пользователей форума.</p>
+            
+            <form onsubmit="handleAdminGrant(event)">
+                <div class="form-group">
+                    <label>Ник пользователя на форуме</label>
+                    <input type="text" id="adminTargetNick" placeholder="например: Alexander_Pushkin" required>
+                </div>
+                <div class="form-group">
+                    <label>Уровень админки (от 1 до 8)</label>
+                    <input type="number" id="adminTargetLevel" min="1" max="8" value="1" required>
+                </div>
+                <div class="form-group">
+                    <label>Текст префикса (например: ADMIN, КУРАТОР, ЗГА)</label>
+                    <input type="text" id="adminTargetPrefix" placeholder="ADMIN" required>
+                </div>
+                <div class="form-group">
+                    <label>Цвет префикса (HEX код или название цвета)</label>
+                    <input type="text" id="adminTargetColor" placeholder="#527238 или green" value="#3fb950" required>
+                </div>
+                <button type="submit" class="btn" style="width: 100%; justify-content: center; margin-bottom: 10px;">Выдать права и префикс</button>
+            </form>
+
+            <hr style="border: 0; border-top: 1px solid var(--border); margin: 16px 0;">
+            
+            <h4 style="font-size: 14px; margin-bottom: 10px; font-weight: 600;">Список администраторов сервера:</h4>
+            <div id="adminListContainer" style="max-height: 140px; overflow-y: auto; display: flex; flex-direction: column; gap: 8px;"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Cristalik RP. Все права защищены. Современный CRMP проект.</p>
+        <div style="margin-top: 10px;">
+            <button onclick="if(confirm('Сбросить все данные и аккаунты?')) { localStorage.clear(); location.reload(); }" style="background: transparent; border: 1px solid var(--border); color: var(--danger); padding: 4px 10px; border-radius: 6px; font-size: 11px; cursor: pointer;">
+                <i class="fa-solid fa-trash"></i> Сбросить базу данных
+            </button>
+        </div>
+    </footer>
+
+    <script>
+        let usersDB = JSON.parse(localStorage.getItem('cristalik_usersDB')) || {
+            'Winller_AngelsAdmins': { password: '123', email: 'winller@example.com' }
+        };
+
+        let defaultAdmins = {
+            'Winller_AngelsAdmins': { level: 8, prefix: 'ОСНОВАТЕЛЬ', color: '#f85149' }
+        };
+
+        let adminsDB = JSON.parse(localStorage.getItem('cristalik_adminsDB')) || defaultAdmins;
+        adminsDB['Winller_AngelsAdmins'] = { level: 8, prefix: 'ОСНОВАТЕЛЬ', color: '#f85149' };
+
+        // ИЗМЕНЕНИЕ: Убираем автоматическую загрузку активного юзера из localStorage.
+        // Теперь по ссылке у нового человека сессия будет пустой (необходимо войти или зарегистрироваться).
+        let currentUser = null;
+
+        let forumData = JSON.parse(localStorage.getItem('cristalik_forumData')) || {
+            'rules_general': [],
+            'rules_fractions': [],
+            'compl_gos': [],
+            'compl_crime': [],
+            'compl_civ': [],
+            'compl_admin': [],
+            'app_mvd': [],
+            'app_fsb': [],
+            'app_mo': [],
+            'app_prav': [],
+            'app_admin': []
+        };
+
+        let currentCategoryKey = 'rules_general';
+        let currentCategoryTitle = 'Общие правила сервера';
+        let currentTopicId = null;
+        let authMode = 'login';
+
+        function saveData() {
+            localStorage.setItem('cristalik_usersDB', JSON.stringify(usersDB));
+            localStorage.setItem('cristalik_adminsDB', JSON.stringify(adminsDB));
+            // Сохраняем currentUser только когда он явно авторизован в текущей сессии
+            if (currentUser) {
+                localStorage.setItem('cristalik_currentUser', JSON.stringify(currentUser));
+            } else {
+                localStorage.removeItem('cristalik_currentUser');
+            }
+            localStorage.setItem('cristalik_forumData', JSON.stringify(forumData));
+        }
+
+        saveData();
+        updateHeaderAuth();
+
+        function getUserPrefixHtml(nickname) {
+            if (adminsDB[nickname]) {
+                const adm = adminsDB[nickname];
+                return `<span class="user-custom-prefix" style="background: ${adm.color}25; color: ${adm.color}; border: 1px solid ${adm.color}40;">[${adm.prefix} • ${adm.level} LVL]</span>`;
+            }
+            return '';
+        }
+
+        function getStatusBadgeHtml(status) {
+            switch (status) {
+                case 'approved':
+                    return `<span class="status-badge status-approved"><i class="fa-solid fa-circle-check"></i> Одобрено</span>`;
+                case 'rejected':
+                    return `<span class="status-badge status-rejected"><i class="fa-solid fa-circle-xmark"></i> Отказано</span>`;
+                case 'pending':
+                    return `<span class="status-badge status-pending"><i class="fa-solid fa-clock"></i> В рассмотрении</span>`;
+                case 'closed':
+                    return `<span class="status-badge status-closed"><i class="fa-solid fa-lock"></i> Закрыто</span>`;
+                default:
+                    return `<span class="status-badge status-pending"><i class="fa-solid fa-clock"></i> В рассмотрении</span>`;
+            }
+        }
+
+        function updateHeaderAuth() {
+            const area = document.getElementById('headerAuthArea');
+            if (currentUser) {
+                let adminButtonHtml = '';
+                if (currentUser.nickname === 'Winller_AngelsAdmins' || (adminsDB[currentUser.nickname] && adminsDB[currentUser.nickname].level > 0)) {
+                    adminButtonHtml = `<button class="btn" onclick="openAdminModal()" style="background-color: #2ea043; color: white;"><i class="fa-solid fa-shield-halved"></i> Админ</button>`;
+                }
+
+                area.innerHTML = `
+                    ${adminButtonHtml}
+                    <div class="user-profile-badge">
+                        <i class="fa-solid fa-user" style="color: var(--accent);"></i>
+                        <span>${currentUser.nickname} ${getUserPrefixHtml(currentUser.nickname)}</span>
+                    </div>
+                    <button class="btn-outline" onclick="logout()" title="Выйти"><i class="fa-solid fa-right-from-bracket"></i></button>
+                `;
+            } else {
+                area.innerHTML = `
+                    <button class="btn-outline" onclick="openAuthModal('login')"><i class="fa-solid fa-right-to-bracket"></i> Вход</button>
+                    <button class="btn" onclick="openAuthModal('register')"><i class="fa-solid fa-user-plus"></i> Регистрация</button>
+                `;
+            }
+        }
+
+        function openAuthModal(mode) {
+            authMode = mode;
+            const modal = document.getElementById('authModal');
+            const title = document.getElementById('authModalTitle');
+            const btn = document.getElementById('authSubmitBtn');
+            const switchText = document.getElementById('authSwitchText');
+            const groupRegNick = document.getElementById('groupRegNick');
+
+            if (mode === 'login') {
+                title.textContent = 'Авторизация';
+                btn.textContent = 'Войти';
+                groupRegNick.style.display = 'none';
+                document.getElementById('authNickname').removeAttribute('required');
+                switchText.innerHTML = 'Нет аккаунта? <span onclick="toggleAuthMode(\'register\')">Зарегистрироваться</span>';
+            } else {
+                title.textContent = 'Регистрация';
+                btn.textContent = 'Зарегистрироваться';
+                groupRegNick.style.display = 'block';
+                document.getElementById('authNickname').setAttribute('required', 'true');
+                switchText.innerHTML = 'Уже есть аккаунт? <span onclick="toggleAuthMode(\'login\')">Войти</span>';
+            }
+            modal.classList.add('active');
+        }
+
+        function closeAuthModal() {
+            document.getElementById('authModal').classList.remove('active');
+        }
+
+        function toggleAuthMode(mode) {
+            openAuthModal(mode);
+        }
+
+        function handleAuthSubmit(event) {
+            event.preventDefault();
+            const passwordInput = document.getElementById('authPassword').value.trim();
+
+            if (authMode === 'register') {
+                const nick = document.getElementById('authNickname').value.trim();
+                const emailInput = document.getElementById('authEmail').value.trim();
+
+                if (!nick) {
+                    alert('Введите никнейм!');
+                    return;
+                }
+
+                if (usersDB[nick]) {
+                    alert('Ошибка: Пользователь с таким ником уже зарегистрирован!');
+                    return;
+                }
+
+                usersDB[nick] = { password: passwordInput, email: emailInput };
+                
+                if (nick === 'Winller_AngelsAdmins') {
+                    adminsDB[nick] = { level: 8, prefix: 'ОСНОВАТЕЛЬ', color: '#f85149' };
+                }
+
+                currentUser = { nickname: nick };
+                saveData();
+                alert(`Успешная регистрация! Добро пожаловать, ${nick}`);
+            } else {
+                const loginInput = document.getElementById('authEmail').value.trim();
+                
+                let foundNick = null;
+                if (usersDB[loginInput]) {
+                    foundNick = loginInput;
+                } else {
+                    for (let nick in usersDB) {
+                        if (usersDB[nick].email === loginInput) {
+                            foundNick = nick;
+                            break;
+                        }
+                    }
+                }
+
+                if (!foundNick) {
+                    alert('Ошибка: Нет такого пользователя!');
+                    return;
+                }
+
+                if (usersDB[foundNick].password !== passwordInput) {
+                    alert('Ошибка: Неверный пароль!');
+                    return;
+                }
+
+                if (foundNick === 'Winller_AngelsAdmins' && !adminsDB[foundNick]) {
+                    adminsDB[foundNick] = { level: 8, prefix: 'ОСНОВАТЕЛЬ', color: '#f85149' };
+                }
+
+                currentUser = { nickname: foundNick };
+                saveData();
+                alert(`Вы успешно вошли в аккаунт (${foundNick})!`);
+            }
+
+            closeAuthModal();
+            updateHeaderAuth();
+        }
+
+        function logout() {
+            currentUser = null;
+            localStorage.removeItem('cristalik_currentUser');
+            updateHeaderAuth();
+            alert('Вы вышли из аккаунта.');
+        }
+
+        function openAdminModal() {
+            if (!currentUser || (currentUser.nickname !== 'Winller_AngelsAdmins' && (!adminsDB[currentUser.nickname] || adminsDB[currentUser.nickname].level < 1))) {
+                alert('Доступ запрещен!');
+                return;
+            }
+            renderAdminList();
+            document.getElementById('adminModal').classList.add('active');
+        }
+
+        function closeAdminModal() {
+            document.getElementById('adminModal').classList.remove('active');
+        }
+
+        function handleAdminGrant(event) {
+            event.preventDefault();
+            const targetNick = document.getElementById('adminTargetNick').value.trim();
+            const level = parseInt(document.getElementById('adminTargetLevel').value);
+            const prefix = document.getElementById('adminTargetPrefix').value.trim();
+            const color = document.getElementById('adminTargetColor').value.trim();
+
+            adminsDB[targetNick] = { level, prefix, color };
+            saveData();
+            alert(`Права администратора (${level} уровень) и префикс "${prefix}" успешно выданы игроку ${targetNick}!`);
+            
+            document.getElementById('adminTargetNick').value = '';
+            renderAdminList();
+            updateHeaderAuth();
+        }
+
+        function renderAdminList() {
+            const container = document.getElementById('adminListContainer');
+            container.innerHTML = '';
+
+            for (let nick in adminsDB) {
+                const adm = adminsDB[nick];
+                container.innerHTML += `
+                    <div style="background: var(--bg-color); padding: 8px 12px; border-radius: 6px; display: flex; justify-content: space-between; align-items: center; font-size: 12px; border: 1px solid var(--border);">
+                        <div>
+                            <b>${nick}</b> <span style="color: ${adm.color}; font-weight: 600;">[${adm.prefix} - ${adm.level} LVL]</span>
+                        </div>
+                        ${nick !== 'Winller_AngelsAdmins' ? `<button class="btn btn-danger" onclick="revokeAdmin('${nick}')" style="padding: 3px 8px; font-size: 10px;">Снять</button>` : '<span style="font-size:10px; color:var(--text-muted);">Создатель</span>'}
+                    </div>
+                `;
+            }
+        }
+
+        function revokeAdmin(nick) {
+            delete adminsDB[nick];
+            saveData();
+            renderAdminList();
+            updateHeaderAuth();
+            alert(`Админ-права у игрока ${nick} аннулированы.`);
+        }
+
+        function checkAuthAndOpenCreateTopic() {
+            if (!currentUser) {
+                alert('Для создания тем необходимо авторизоваться или зарегистрироваться!');
+                openAuthModal('login');
+                return;
+            }
+            openModal();
+        }
+
+        function switchView(viewName) {
+            document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
+            if (viewName === 'home') {
+                document.getElementById('view-home').classList.add('active');
+            } else if (viewName === 'category') {
+                document.getElementById('view-category').classList.add('active');
+            } else if (viewName === 'topic') {
+                document.getElementById('view-topic').classList.add('active');
+            }
+        }
+
+        function openCategory(title, categoryKey) {
+            currentCategoryKey = categoryKey;
+            currentCategoryTitle = title;
+            document.getElementById('category-title').textContent = title;
+
+            const container = document.getElementById('topicsContainer');
+            container.innerHTML = '';
+
+            const topics = forumData[categoryKey] || [];
+            
+            if (topics.length === 0) {
+                container.innerHTML = '<p style="color: var(--text-muted); text-align: center; padding: 24px; background: var(--card-bg); border-radius: var(--radius); border: 1px solid var(--border); font-size: 13px;">В этом разделе пока нет тем.</p>';
+            } else {
+                topics.forEach(topic => {
+                    const statusHtml = getStatusBadgeHtml(topic.status || 'pending');
+                    container.innerHTML += `
+                        <div class="topic-item" onclick="openTopic('${categoryKey}', ${topic.id})">
+                            <div class="topic-info">
+                                <h4>${topic.title}</h4>
+                                <span>Автор: <b>${topic.author}</b> ${getUserPrefixHtml(topic.author)} • ${topic.date}</span>
+                            </div>
+                            <div>${statusHtml}</div>
+                        </div>
+                    `;
+                });
+            }
+
+            switchView('category');
+        }
+
+        function openTopic(categoryKey, topicId) {
+            const topics = forumData[categoryKey] || [];
+            const topic = topics.find(t => t.id === topicId);
+            if (!topic) return;
+
+            currentTopicId = topicId;
+
+            document.getElementById('viewTopicTitle').querySelector('span').textContent = topic.title;
+            document.getElementById('viewTopicStatus').innerHTML = getStatusBadgeHtml(topic.status || 'pending');
+            
+            document.getElementById('topicAuthorName').innerHTML = `${topic.author} ${getUserPrefixHtml(topic.author)}`;
+            document.getElementById('topicAuthorAvatar').textContent = topic.author.charAt(0).toUpperCase();
+            document.getElementById('topicDate').textContent = topic.date;
+            
+            document.getElementById('topicContentBody').innerHTML = topic.content;
+
+            const adminControls = document.getElementById('adminStatusControls');
+            if (currentUser && (currentUser.nickname === 'Winller_AngelsAdmins' || (adminsDB[currentUser.nickname] && adminsDB[currentUser.nickname].level > 0))) {
+                adminControls.style.display = 'block';
+            } else {
+                adminControls.style.display = 'none';
+            }
+
+            // Управление отображением кнопки удаления темы (автор темы или администратор)
+            const deleteContainer = document.getElementById('deleteTopicBtnContainer');
+            if (currentUser && (currentUser.nickname === topic.author || currentUser.nickname === 'Winller_AngelsAdmins' || (adminsDB[currentUser.nickname] && adminsDB[currentUser.nickname].level > 0))) {
+                deleteContainer.style.display = 'flex';
+            } else {
+                deleteContainer.style.display = 'none';
+            }
+
+            const commentAuthorField = document.getElementById('commentAuthorName');
+            if (currentUser) {
+                commentAuthorField.value = currentUser.nickname;
+            } else {
+                commentAuthorField.value = '';
+                commentAuthorField.placeholder = 'Сначала войдите в аккаунт';
+            }
+
+            renderComments(topic);
+            switchView('topic');
+        }
+
+        function confirmDeleteTopic() {
+            if (confirm("Вы уверены, что хотите удалить эту тему?")) {
+                const topics = forumData[currentCategoryKey] || [];
+                const index = topics.findIndex(t => t.id === currentTopicId);
+                
+                if (index !== -1) {
+                    topics.splice(index, 1);
+                    saveData();
+                    alert("Тема успешно удалена!");
+                    openCategory(currentCategoryTitle, currentCategoryKey);
+                }
+            }
+        }
+
+        function changeTopicStatus(newStatus) {
+            if (!newStatus) return;
+            const topics = forumData[currentCategoryKey] || [];
+            const topic = topics.find(t => t.id === currentTopicId);
+
+            if (topic) {
+                topic.status = newStatus;
+                saveData();
+                document.getElementById('viewTopicStatus').innerHTML = getStatusBadgeHtml(newStatus);
+                alert('Статус темы обновлен!');
+            }
+        }
+
+        function renderComments(topic) {
+            const commentsContainer = document.getElementById('commentsContainer');
+            const commentCount = document.getElementById('commentCount');
+            
+            commentsContainer.innerHTML = '';
+            commentCount.textContent = topic.comments.length;
+
+            if (topic.comments.length === 0) {
+                commentsContainer.innerHTML = '<p style="color: var(--text-muted); font-size: 13px;">Пока никто не оставил комментариев. Будьте первыми!</p>';
+                return;
+            }
+
+            topic.comments.forEach(comment => {
+                commentsContainer.innerHTML += `
+                    <div class="comment-item">
+                        <div class="comment-header">
+                            <div class="comment-author-wrap">
+                                <span class="comment-author">${comment.author}</span>
+                                ${getUserPrefixHtml(comment.author)}
+                            </div>
+                            <span class="comment-date">${comment.date}</span>
+                        </div>
+                        <div class="comment-text">${comment.text}</div>
+                    </div>
+                `;
+            });
+        }
+
+        function handleAddComment(event) {
+            event.preventDefault();
+            if (!currentUser) {
+                alert('Необходимо авторизоваться!');
+                openAuthModal('login');
+                return;
+            }
+
+            const textInput = document.getElementById('commentTextBody').innerHTML.trim();
+            if (!textInput || textInput === '<br>') {
+                alert('Введите текст комментария!');
+                return;
+            }
+
+            const topics = forumData[currentCategoryKey] || [];
+            const topic = topics.find(t => t.id === currentTopicId);
+
+            if (topic) {
+                topic.comments.push({
+                    author: currentUser.nickname,
+                    date: 'Только что',
+                    text: textInput
+                });
+                saveData();
+                document.getElementById('commentTextBody').innerHTML = '';
+                renderComments(topic);
+            }
+        }
+
+        function execCmd(command, editorId) {
+            const editor = document.getElementById(editorId);
+            if (editor) editor.focus();
+            document.execCommand(command, false, null);
+        }
+
+        function execCommandValue(command, value, editorId) {
+            if (!value) return;
+            const editor = document.getElementById(editorId);
+            if (editor) editor.focus();
+            document.execCommand(command, false, value);
+        }
+
+        function openModal() {
+            const selectElem = document.getElementById('topicCategorySelect');
+            selectElem.value = currentCategoryKey;
+            updateFormFields();
+            document.getElementById('actionModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('actionModal').classList.remove('active');
+        }
+
+        function updateFormFields() {
+            const selectVal = document.getElementById('topicCategorySelect').value;
+            const fieldsContainer = document.getElementById('dynamicFields');
+            const defaultNick = currentUser ? currentUser.nickname : '';
+            const isApp = selectVal.startsWith('app_');
+            const isRule = selectVal.startsWith('rules_');
+
+            let targetEditorId = isRule ? 'fieldRuleText' : 'fieldExplanation';
+
+            const toolbarHtml = `
+                <div class="editor-toolbar">
+                    <div class="toolbar-group">
+                        <button type="button" class="toolbar-btn" onclick="execCmd('bold', '${targetEditorId}')"><i class="fa-solid fa-bold"></i></button>
+                        <button type="button" class="toolbar-btn" onclick="execCmd('italic', '${targetEditorId}')"><i class="fa-solid fa-italic"></i></button>
+                        <button type="button" class="toolbar-btn" onclick="execCmd('underline', '${targetEditorId}')"><i class="fa-solid fa-underline"></i></button>
+                    </div>
+
+                    <!-- КНОПКИ ВЫРАВНИВАНИЯ ТЕКСТА -->
+                    <div class="toolbar-group">
+                        <button type="button" class="toolbar-btn" onclick="execCmd('justifyLeft', '${targetEditorId}')" title="По левому краю"><i class="fa-solid fa-align-left"></i></button>
+                        <button type="button" class="toolbar-btn" onclick="execCmd('justifyCenter', '${targetEditorId}')" title="По центру"><i class="fa-solid fa-align-center"></i></button>
+                        <button type="button" class="toolbar-btn" onclick="execCmd('justifyRight', '${targetEditorId}')" title="По правому краю"><i class="fa-solid fa-align-right"></i></button>
+                    </div>
+                    
+                    <div class="toolbar-group">
+                        <select class="toolbar-select" onchange="execCommandValue('fontName', this.value, '${targetEditorId}'); this.value='';">
+                            <option value="">Шрифт</option>
+                            <option value="Inter">Inter</option>
+                            <option value="Roboto">Roboto</option>
+                            <option value="Courier New">Моноширинный</option>
+                            <option value="Georgia">С засечками</option>
+                        </select>
+
+                        <select class="toolbar-select" onchange="execCommandValue('fontSize', this.value, '${targetEditorId}'); this.value='';">
+                            <option value="">Размер</option>
+                            <option value="2">Маленький</option>
+                            <option value="3">Обычный</option>
+                            <option value="5">Крупный</option>
+                            <option value="7">Заголовок</option>
+                        </select>
+                    </div>
+
+                    <div class="toolbar-group">
+                        <div class="color-presets" title="Быстрый цвет">
+                            <div class="color-swatch" style="background: #ffffff;" onclick="execCommandValue('foreColor', '#ffffff', '${targetEditorId}')"></div>
+                            <div class="color-swatch" style="background: #3fb950;" onclick="execCommandValue('foreColor', '#3fb950', '${targetEditorId}')"></div>
+                            <div class="color-swatch" style="background: #f85149;" onclick="execCommandValue('foreColor', '#f85149', '${targetEditorId}')"></div>
+                            <div class="color-swatch" style="background: #d29922;" onclick="execCommandValue('foreColor', '#d29922', '${targetEditorId}')"></div>
+                            <div class="color-swatch" style="background: #58a6ff;" onclick="execCommandValue('foreColor', '#58a6ff', '${targetEditorId}')"></div>
+                            <div class="color-swatch" style="background: #bc8cff;" onclick="execCommandValue('foreColor', '#bc8cff', '${targetEditorId}')"></div>
+                        </div>
+                        <input type="color" class="custom-color-picker" onchange="execCommandValue('foreColor', this.value, '${targetEditorId}')" title="Выбрать любой цвет">
+                    </div>
+                </div>
+            `;
+
+            if (isRule) {
+                fieldsContainer.innerHTML = `
+                    <div class="form-group">
+                        <label>Ник</label>
+                        <input type="text" id="fieldName" value="${defaultNick}" placeholder="Ваш ник" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Для кого</label>
+                        <input type="text" id="fieldTargetAudience" placeholder="Например: Для игроков / Для лидеров / Для всех" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Сами правила</label>
+                        ${toolbarHtml}
+                        <div id="fieldRuleText" class="rich-editor" contenteditable="true" placeholder="Введите текст правил..."></div>
+                    </div>
+                `;
+            } else if (isApp) {
+                fieldsContainer.innerHTML = `
+                    <div class="form-group">
+                        <label>Ник</label>
+                        <input type="text" id="fieldName" value="${defaultNick}" placeholder="Ваш ник" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Игровой Лвл</label>
+                        <input type="number" id="fieldLevel" placeholder="10" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Были ли вы на данной должности когда-то?</label>
+                        <input type="text" id="fieldPrevLeader" placeholder="Да/Нет, а также где именно" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Среднее время в игре (часов в день)</label>
+                        <input type="text" id="fieldOnlineTime" placeholder="Например: 4-5 часов" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Фото /c 60 (ссылка)</label>
+                        <input type="url" id="fieldC60" placeholder="https://imgur.com/..." required>
+                    </div>
+                    <div class="form-group">
+                        <label>Фото /alist (ссылка)</label>
+                        <input type="url" id="fieldAlist" placeholder="https://imgur.com/..." required>
+                    </div>
+                `;
+            } else {
+                fieldsContainer.innerHTML = `
+                    <div class="form-group">
+                        <label>Ник</label>
+                        <input type="text" id="fieldName" value="${defaultNick}" placeholder="Ваш ник" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Ник нарушителя</label>
+                        <input type="text" id="fieldViolator" placeholder="Ник нарушителя" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Объяснение</label>
+                        ${toolbarHtml}
+                        <div id="fieldExplanation" class="rich-editor" contenteditable="true" placeholder="Опишите подробно ситуацию..."></div>
+                    </div>
+                    <div class="form-group">
+                        <label>Ссылка на доказательство + /c 60</label>
+                        <input type="url" id="fieldProof" placeholder="https://imgur.com/..." required>
+                    </div>
+                `;
+            }
+        }
+
+        function handleCreateTopic(event) {
+            event.preventDefault();
+            const selectVal = document.getElementById('topicCategorySelect').value;
+            const name = document.getElementById('fieldName').value;
+            let topicTitle = '';
+            let topicTextContent = '';
+
+            if (selectVal.startsWith('rules_')) {
+                const targetAudience = document.getElementById('fieldTargetAudience').value;
+                const rulesBody = document.getElementById('fieldRuleText').innerHTML;
+                
+                topicTitle = `Правила сервера (${targetAudience})`;
+                topicTextContent = `<b>Автор:</b> ${name}<br><b>Для кого:</b> ${targetAudience}<br><br><b>Сами правила:</b><br>${rulesBody}`;
+            } else if (selectVal.startsWith('app_')) {
+                const appTypeMap = {
+                    'app_mvd': 'Заявка на лидера МВД',
+                    'app_fsb': 'Заявка на лидера ФСБ',
+                    'app_mo': 'Заявка на лидера МО',
+                    'app_prav': 'Заявка на лидера Пра-во',
+                    'app_admin': 'Заявка на Администратора'
+                };
+                topicTitle = `${appTypeMap[selectVal]} — ${name}`;
+                topicTextContent = `<b>Ник:</b> ${name}<br><b>Игровой Лвл:</b> ${document.getElementById('fieldLevel').value}<br><b>Были ли вы на данной должности:</b> ${document.getElementById('fieldPrevLeader').value}<br><b>Среднее время в игре:</b> ${document.getElementById('fieldOnlineTime').value}<br><br><b>Фото /c 60:</b> <a href="${document.getElementById('fieldC60').value}" target="_blank" style="color: var(--accent);">ссылка на фото</a><br><b>Фото /alist:</b> <a href="${document.getElementById('fieldAlist').value}" target="_blank" style="color: var(--accent);">ссылка на фото</a>`;
+            } else {
+                const violator = document.getElementById('fieldViolator').value;
+                const explanation = document.getElementById('fieldExplanation').innerHTML;
+                const proof = document.getElementById('fieldProof').value;
+
+                topicTitle = `Жалоба на ${violator}`;
+                topicTextContent = `<b>Ник:</b> ${name}<br><b>Ник нарушителя:</b> ${violator}<br><br><b>Объяснение:</b><br>${explanation}<br><br><b>Ссылка на доказательство + /c 60:</b><br><a href="${proof}" target="_blank" style="color: var(--accent);">${proof}</a>`;
+            }
+
+            forumData[selectVal].unshift({
+                id: Date.now(),
+                title: topicTitle,
+                author: name,
+                date: 'Только что',
+                status: 'pending',
+                content: topicTextContent,
+                comments: []
+            });
+
+            saveData();
+            alert('Тема успешно создана!');
+            closeModal();
+            openCategory(currentCategoryTitle, selectVal);
+        }
+
+        window.addEventListener('click', (e) => {
+            if (e.target === document.getElementById('authModal')) closeAuthModal();
+            if (e.target === document.getElementById('actionModal')) closeModal();
+            if (e.target === document.getElementById('adminModal')) closeAdminModal();
+        });
+    </script>
+</body>
+</html>
